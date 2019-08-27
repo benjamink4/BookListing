@@ -69,15 +69,10 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
 
 
 
-
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 //progressBar.setVisibility(View.VISIBLE);
-
-
-
 
                 String s=editText.getText().toString();
                 query="https://www.googleapis.com/books/v1/volumes?q="+s+"&maxResults=30";
@@ -125,9 +120,6 @@ public class MainActivity extends AppCompatActivity  implements LoaderCallbacks<
         progressBar.setVisibility(View.VISIBLE);
         getLoaderManager().restartLoader(BOOK_LOADER_ID,null,MainActivity.this);
         blankState.setVisibility(View.GONE);
-
-
-
 
 
         adapter=new BookApadpter(this, new ArrayList<Books>());

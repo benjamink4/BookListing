@@ -42,10 +42,28 @@ public class BookApadpter extends ArrayAdapter<Books> {
 
         ImageView imageView=(ImageView)listItemView.findViewById(R.id.imageView);
 
+        try{
+            Picasso.with(getContext())
+                    .load(current_book.getImageUrl())
+                    .placeholder(R.mipmap.ic_launcher) //places a image while the book cover
+                    .into(imageView);
+        }catch (Exception e){
+            e.printStackTrace();
+            Picasso.with(getContext())
+                    .load(R.mipmap.ic_launcher)
+                    .into(imageView);
+        }
 
-        Picasso.with(getContext()).load(current_book.getImageUrl()).into(imageView);
+
+
+        /*
+        if(current_book.getImageUrl()!=null) {
+
+            Picasso.with(getContext()).load(current_book.getImageUrl()).into(imageView);
+        }*/
 
         Log.v("The image url is ",current_book.getImageUrl());
+
         Picasso.with(getContext()).setLoggingEnabled(true);
 
 
@@ -57,9 +75,7 @@ public class BookApadpter extends ArrayAdapter<Books> {
         return listItemView;
 
     }
-    public void update(List<Books> books){
-        this.books=books;
-    }
+
 
 
 }
